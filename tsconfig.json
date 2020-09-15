@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"outDir": "build",
+		"module": "Commonjs",
+		"target": "ES6",
+		"lib": ["dom", "ES2015", "ES2017"],
+		"noImplicitAny": true,
+		"moduleResolution": "node",
+		"jsx": "react",
+		"allowSyntheticDefaultImports": true,
+		"allowJs": true,
+		"removeComments": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"sourceMap": true,
+		"baseUrl": "./src/",
+		"paths": {
+			"components/*": ["components/*"]
+		}
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "build"]
+}
