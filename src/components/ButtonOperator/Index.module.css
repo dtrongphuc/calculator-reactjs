@@ -5,3 +5,7 @@
 	justify-content: center;
 	width: 82px;
 }
+
+.pink {
+	color: var(--pink);
+}

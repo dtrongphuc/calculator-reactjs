@@ -6,3 +6,7 @@
 	width: var(--left-width);
 	height: 236px;
 }
+
+.blue {
+	color: var(--blue);
+}

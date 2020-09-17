@@ -4,12 +4,13 @@ import styles from './Index.module.css';
 
 interface IProps {
 	value: string;
+	custom: string;
 }
 
-const Button: React.FunctionComponent<IProps> = ({ value }) => {
+const Button: React.FunctionComponent<IProps> = ({ value, custom }) => {
 	return (
 		<div className={classNames(styles.wrapper)}>
-			<span className={classNames(styles.number)}>{value}</span>
+			<span className={`${styles.number} ${custom}`}>{value}</span>
 		</div>
 	);
 };
