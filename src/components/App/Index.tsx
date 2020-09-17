@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { AppProvider } from 'Components/Context/Index';
 import Output from 'Components/Output/Index';
 import ButtonOperator from 'Components/ButtonOperator/Index';
 import ButtonFunction from 'Components/ButtonFunction/Index';
@@ -9,16 +10,18 @@ import styles from './Index.module.css';
 const App: React.FunctionComponent = () => {
 	return (
 		<div className={`${styles.app}`}>
-			<Output />
-			<div className={styles.wrapper}>
-				<div className={styles.left}>
-					<ButtonFunction />
-					<ButtonNumber />
+			<AppProvider>
+				<Output />
+				<div className={styles.wrapper}>
+					<div className={styles.left}>
+						<ButtonFunction />
+						<ButtonNumber />
+					</div>
+					<div className={styles.right}>
+						<ButtonOperator />
+					</div>
 				</div>
-				<div className={styles.right}>
-					<ButtonOperator />
-				</div>
-			</div>
+			</AppProvider>
 		</div>
 	);
 };

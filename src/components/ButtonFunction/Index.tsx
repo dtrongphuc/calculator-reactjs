@@ -6,9 +6,9 @@ import styles from './Index.module.css';
 const ButtonFunction: React.FunctionComponent = () => {
 	return (
 		<div className={styles.btnFunctions}>
-			<Button value='RECALL' custom={styles.pink} />
-			<Button value='CLEAR' custom={styles.pink} />
-			<Button value='&#8592;' custom={styles.pink} />
+			<Button dataValue='RECALL' value='RECALL' custom={styles.pink} />
+			<Button dataValue='CLEAR' value='CLEAR' custom={styles.pink} />
+			<Button dataValue='DELETE' value='&#8592;' custom={styles.pink} />
 		</div>
 	);
 };

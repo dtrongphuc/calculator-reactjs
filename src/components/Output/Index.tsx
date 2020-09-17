@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
+import { AppContext } from 'Components/Context/Index';
 import styles from './Index.module.css';
 
 const Output: React.FunctionComponent = () => {
+	const { output } = useContext(AppContext);
 	return (
 		<div className={styles.output}>
-			<span className={styles.number}>0</span>
+			<span className={styles.number}>{output ? output : '0'}</span>
 		</div>
 	);
 };
