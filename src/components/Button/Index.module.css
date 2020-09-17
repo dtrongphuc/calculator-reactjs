@@ -1,0 +1,27 @@
+.wrapper {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 80px;
+	height: 55px;
+	background-color: #292f36;
+	border: 1px solid transparent;
+	margin: 2px;
+}
+
+.wrapper:hover {
+	border: 0.5px solid rgba(255, 255, 255, 0.1);
+	background-color: rgba(41, 47, 54, 0.8);
+}
+
+.wrapper:hover .number {
+	color: rgba(0, 163, 245, 0.8);
+}
+
+.number {
+	color: rgb(0, 163, 245);
+	font-size: 24px;
+	line-height: 1.2;
+	cursor: default;
+}

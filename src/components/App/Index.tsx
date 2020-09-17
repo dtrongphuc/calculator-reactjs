@@ -1,6 +1,14 @@
-import * as React from 'react';
-//import * as styles from './Index.module.css';
+import React from 'react';
 
-const App: React.FunctionComponent = () => <div className='app'></div>;
+import Result from 'components/Output/Index';
+import Button from 'Components/Button/Index';
+import styles from './Index.module.css';
+
+const App: React.FunctionComponent = () => (
+	<div className={`${styles.app}`}>
+		<Result />
+		<Button />
+	</div>
+);
 
 export default App;
