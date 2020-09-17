@@ -1,3 +1,9 @@
+:root {
+	--pure-black: #292f36;
+	--blue: rgb(0, 163, 245);
+	--left-width: 252px;
+}
+
 html {
 	box-sizing: border-box;
 }

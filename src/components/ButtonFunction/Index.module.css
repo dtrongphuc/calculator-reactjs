@@ -1,8 +1,6 @@
-.btnNumbers {
+.btnFunctions {
 	display: flex;
 	align-items: center;
-	flex-wrap: wrap;
 	justify-content: center;
 	width: var(--left-width);
-	height: 236px;
 }

@@ -5,5 +5,9 @@
 		"sourceType": "module"
 	},
 	"plugins": ["@typescript-eslint/"],
-	"extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"]
+	"extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+	"rules": {
+		"at-rule-no-unknown": null,
+		"ignore-at-rule": ["/^value/", "custom"]
+	}
 }
