@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import * as _ from 'lodash';
 
 import { AppContext } from 'Components/Context/Index';
@@ -17,12 +17,6 @@ const Button: React.FunctionComponent<IProps> = ({
 }) => {
 	const { input, setInput, setOutput } = useContext(AppContext);
 
-	useEffect(() => {
-		if (input?.x && input?.operator && input?.y) {
-			handleCalculate();
-		}
-	}, [input]);
-
 	const handleButtonClick = (event: React.MouseEvent) => {
 		const element = event.currentTarget;
 		const value = element.children[0]?.getAttribute('data-value');
@@ -30,12 +24,21 @@ const Button: React.FunctionComponent<IProps> = ({
 		if (value === '=') {
 			handleCalculate();
 		} else {
-			if (!input.x && !value?.match(/[\+\-\*\/]/g)) {
-				setInput({ ...input, x: value || '' });
+			if (
+				!input?.x ||
+				(!input?.operator && !value?.match(/[\+\-\*\/]/g))
+			) {
+				setInput({
+					...input,
+					x: input?.x.concat(value ? value : '') || '',
+				});
 			} else if (value?.match(/[\+\-\*\/]/g)) {
 				setInput({ ...input, operator: value || '' });
 			} else if (input.x && input.operator) {
-				setInput({ ...input, y: value || '' });
+				setInput({
+					...input,
+					y: input?.y.concat(value ? value : '') || '',
+				});
 			}
 		}
 	};
@@ -43,25 +46,36 @@ const Button: React.FunctionComponent<IProps> = ({
 	const handleCalculate = () => {
 		let x = parseInt(input?.x);
 		let y = parseInt(input?.y);
+		let result = 0;
 
 		switch (input?.operator) {
 			case '+':
-				setOutput(x + y);
+				result = x + y;
+				setOutput(result);
+				setInput({ x: '' + result, operator: '', y: '' });
 				break;
 			case '-':
-				setOutput(x - y);
+				result = x - y;
+				setOutput(result);
+				setInput({ x: '' + result, operator: '', y: '' });
 				break;
 
 			case '*':
-				setOutput(x * y);
+				result = x * y;
+				setOutput(result);
+				setInput({ x: '' + result, operator: '', y: '' });
 				break;
 
 			case '/':
-				setOutput(x / y);
+				result = x / y;
+				setOutput(result);
+				setInput({ x: '' + result, operator: '', y: '' });
 				break;
 
 			default:
-				setOutput(0);
+				result = 0;
+				setOutput(result);
+				setInput({ x: '' + result, operator: '', y: '' });
 				break;
 		}
 	};
