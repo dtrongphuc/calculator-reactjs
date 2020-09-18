@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import classNames from 'classnames';
+import React, { useContext, useEffect } from 'react';
+import * as _ from 'lodash';
 
 import { AppContext } from 'Components/Context/Index';
 import styles from './Index.module.css';
@@ -17,23 +17,60 @@ const Button: React.FunctionComponent<IProps> = ({
 }) => {
 	const { input, setInput, setOutput } = useContext(AppContext);
 
+	useEffect(() => {
+		if (input?.x && input?.operator && input?.y) {
+			handleCalculate();
+		}
+	}, [input]);
+
 	const handleButtonClick = (event: React.MouseEvent) => {
 		const element = event.currentTarget;
 		const value = element.children[0]?.getAttribute('data-value');
+
 		if (value === '=') {
 			handleCalculate();
 		} else {
-			setInput(value ? input.concat(value) : input);
+			if (!input.x && !value?.match(/[\+\-\*\/]/g)) {
+				setInput({ ...input, x: value || '' });
+			} else if (value?.match(/[\+\-\*\/]/g)) {
+				setInput({ ...input, operator: value || '' });
+			} else if (input.x && input.operator) {
+				setInput({ ...input, y: value || '' });
+			}
 		}
 	};
 
 	const handleCalculate = () => {
-		// handle input ?
-		setOutput('test');
+		let x = parseInt(input?.x);
+		let y = parseInt(input?.y);
+
+		switch (input?.operator) {
+			case '+':
+				setOutput(x + y);
+				break;
+			case '-':
+				setOutput(x - y);
+				break;
+
+			case '*':
+				setOutput(x * y);
+				break;
+
+			case '/':
+				setOutput(x / y);
+				break;
+
+			default:
+				setOutput(0);
+				break;
+		}
 	};
 
 	return (
-		<div className={classNames(styles.wrapper)} onClick={handleButtonClick}>
+		<div
+			className={styles.wrapper}
+			onClick={_.throttle(handleButtonClick, 100)}
+		>
 			<span
 				data-value={dataValue}
 				className={`${styles.number} ${custom}`}

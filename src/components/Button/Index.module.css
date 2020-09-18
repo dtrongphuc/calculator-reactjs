@@ -8,6 +8,7 @@
 	border: 1px solid transparent;
 	margin: 2px;
 	padding: 4px;
+	user-select: none;
 }
 
 .wrapper:hover {
