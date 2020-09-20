@@ -1,0 +1,60 @@
+.modalWrapper {
+	display: block;
+	position: absolute;
+	height: calc(100% - var(--output-height));
+	top: var(--output-height);
+	left: 0;
+	right: 0;
+	overflow: hidden;
+	z-index: -1;
+}
+
+.modal {
+	display: block;
+	position: relative;
+	background-color: rgba(0, 0, 0, 0.6);
+	transition: all ease 400ms;
+	height: 100%;
+	transform: translateY(-100%);
+	overflow-y: scroll;
+}
+
+.modal::-webkit-scrollbar {
+	width: 6px;
+	background-color: transparent;
+}
+
+.modal::-webkit-scrollbar-thumb {
+	background-color: var(--pink);
+	border-radius: 10px;
+}
+
+.content {
+	position: relative;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.content > p {
+	font-size: 22px;
+	color: var(--blue);
+	line-height: 1.2;
+	margin-top: 20px;
+}
+
+.times {
+	color: var(--blue);
+	display: block;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	filter: opacity(0.8);
+	background-color: var(--pure-black);
+	border-radius: 2px;
+	padding: 2px;
+}
+
+.item {
+	cursor: default;
+}

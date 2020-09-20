@@ -1,7 +1,8 @@
 :root {
 	--pure-black: #292f36;
-	--blue: rgb(0, 163, 245);
+	--blue: #00a3f5;
 	--pink: #d63c6b;
+	--output-height: 80px;
 	--left-width: 252px;
 }
 
@@ -20,4 +21,14 @@ body {
 	font-family: sans-serif;
 	background-image: linear-gradient(to bottom right, #5cc8ff, #d63c6b 100%);
 	background-attachment: fixed;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+	margin: 0;
+	padding: 0;
 }

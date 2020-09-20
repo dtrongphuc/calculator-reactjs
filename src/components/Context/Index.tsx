@@ -2,24 +2,36 @@ import React, { useState } from 'react';
 
 type input = { x: string; operator: string; y: string };
 interface ContextState {
-	input: input;
-	output: number;
-	setInput: React.Dispatch<React.SetStateAction<input>>;
-	setOutput: React.Dispatch<React.SetStateAction<number>>;
+	inputValue: input;
+	output: string;
+	history: Array<input>;
+	setInputValue: React.Dispatch<React.SetStateAction<input>>;
+	setOutput: React.Dispatch<React.SetStateAction<string>>;
+	setHistory: React.Dispatch<React.SetStateAction<Array<input>>>;
 }
 
 export const AppContext = React.createContext({} as ContextState);
 
 export const AppProvider = (props: any) => {
-	const [input, setInput] = useState<input>({
+	const [inputValue, setInputValue] = useState<input>({
 		x: '',
 		y: '',
 		operator: '',
 	});
-	const [output, setOutput] = useState<number>(0);
+	const [output, setOutput] = useState<string>('');
+	const [history, setHistory] = useState<Array<input>>([]);
 
 	return (
-		<AppContext.Provider value={{ input, output, setInput, setOutput }}>
+		<AppContext.Provider
+			value={{
+				inputValue,
+				output,
+				history,
+				setInputValue,
+				setOutput,
+				setHistory,
+			}}
+		>
 			{props.children}
 		</AppContext.Provider>
 	);
